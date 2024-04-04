@@ -16,7 +16,7 @@ class Main {
         System.out.println("=================");
 
         // Polymorphism
-        Animal[] animals = new Animal[2];
+        Animal[] animals = new Animal[3];
         animals[0] = new Dog();
         animals[0].setType("Machine Dog");
         animals[0].setName("Android01");
@@ -25,9 +25,19 @@ class Main {
         animals[1].setType("Machine Cat");
         animals[1].setName("Xeon P012");
 
+        animals[2] = new Dog();
+        animals[2] = animals[1];
+
         for (Animal animal : animals) {
             animal.intro();
         }
+
+        System.out.println("=================");
+
+        // Polymorphism
+        Vet vet = new Vet();
+        vet.giveAShot(dog1);
+        vet.giveAShot(cat1);
 
     }
 }
@@ -56,7 +66,19 @@ class Animal {
     public void intro() {
         System.out.println("This is " + this.name + " and it is a " + this.type);
     }
+
+    public void makeNoise() {
+        System.out.println("The " + this.type + " Name: " + this.name + " is making noise ...");
+    }
 }
 
 class Dog extends Animal {}
 class Cat extends Animal {}
+
+
+class Vet {
+    public void giveAShot (Animal animal) {
+        System.out.println("Vet is giving a shot to " + animal.getName());
+        animal.makeNoise();
+    }
+}
