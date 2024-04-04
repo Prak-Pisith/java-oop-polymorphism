@@ -34,14 +34,24 @@ class Main {
 
         System.out.println("=================");
 
-        // Polymorphism
+        // Polymorphism Arguments
         Vet vet = new Vet();
         vet.giveAShot(dog1);
         vet.giveAShot(cat1);
 
+        System.out.println("=================");
+
+        Hippo hippo = new Hippo();
+        hippo.setType("Hybrid Animal");
+        hippo.setName("Pipo");
+        // Overloading
+        hippo.intro();
+        hippo.intro("Hello I'm " + hippo.getName());
+
     }
 }
 
+// Super Call
 class Animal {
     private String type;
     private String name;
@@ -72,11 +82,26 @@ class Animal {
     }
 }
 
+// SubClass of SuperClass (Animal)
 class Dog extends Animal {}
 class Cat extends Animal {}
 
+class Hippo extends Animal {
+    @java.lang.Override
+    public void intro() {
+        super.intro();
+        System.out.println("EXTENDED: This is Hippo Intro Method");
+    }
+
+    // Overloading
+    public void intro(String arg) {
+        System.out.println("OVERLOADING: This is a new overloading Intro with message " + arg);
+    }
+}
+
 
 class Vet {
+    // Polymorphism Arguments
     public void giveAShot (Animal animal) {
         System.out.println("Vet is giving a shot to " + animal.getName());
         animal.makeNoise();
